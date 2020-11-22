@@ -6,6 +6,6 @@
 
 # Sample
 
-![Test Image 1](Screenshot 108.png)
-![Test Image 2](Screenshot 109.png)
-![Test Image 3](Screenshot 110.png)
+![Test Image 1](Screenshot_108.png)
+![Test Image 2](Screenshot_109.png)
+![Test Image 3](Screenshot_110.png)
