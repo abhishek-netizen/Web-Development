@@ -1,0 +1,19 @@
+for html css and Js static files:
+
+rename index.html to >> home.html
+add index.php file and write  as below:
+<?php include_once("home.html"); ?>
+
+1]git init
+
+2]heroku create   |it will generate a msg along with a link copy the msg for 4 th step egs msg is like :peaceful deapth 5555
+
+3]git add .
+
+
+4]git commit -m 'the msg created in 2nd step paste same here'
+
+5]git push heroku master
+
+
+6]heroku open
