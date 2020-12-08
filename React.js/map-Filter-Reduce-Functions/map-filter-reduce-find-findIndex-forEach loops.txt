@@ -1,0 +1,62 @@
+--------------------------------------------------------------------
+###Creating a function to double the number - using map function.
+--------------------------------------------------------------------
+var numbers = [1,2,3,4,5,6]
+
+function double(x){
+return x * 2;
+}
+console.log(numbers);
+
+const newNumbers = numbers.map(double);
+console.log(newNumbers);
+------------------------------------------------------------------
+###Creating a function to double the number - forEach function.
+------------------------------------------------------------------
+var numbers = [1,2,3,4,5,10,15,25]
+
+var newNumbers = [];
+
+function double(x){
+newNumbers.push(x)
+}
+
+numbers.forEach(double);
+console.log(newNumbers);
+
+#making above function anonymous;
+
+var numbers = [1,2,3,45,50,35]
+
+var newNumbers = [];
+
+numbers.forEach(function(x){
+newNumbers.push(x)
+})
+
+console.log(newNumbers)
+--------------------------------------------------------------------
+###Creating a Filter function 
+--------------------------------------------------------------------
+var numbers = [1,20,30,50,55,60,70]
+
+const newNumbers = numbers.filter(function(num){
+return num>10;
+}
+console.log(newNumbers);
+-------------------------------------------------------------------
+###Reduce functions using normal method
+------------------------------------------------------------------
+var numbers = [3,56,2,48,5];
+var newNumbers = 0;
+numbers.forEach(function(currentNumber){
+  newNumber += currentNumber;
+})
+
+##Reduce using REDUCE function:
+
+var newNumber = numbers.reduce(function(accumulator,currentNumber){
+  return accumulator + currentNumber;
+})
+
+console.log(newNumber); ans:114
