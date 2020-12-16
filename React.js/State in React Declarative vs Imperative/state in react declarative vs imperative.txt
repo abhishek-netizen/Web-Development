@@ -1,0 +1,50 @@
+###DECLARATIVE
+--------------------------
+import React from "react";
+import "../public/styles.css";
+
+function Strike() {
+  Document.getElementById("root").style.textDecoration = "line-through";
+}
+
+function App() {
+  var isDone = false;
+
+  const strikeThrough = { textDecoration: "line-through" };
+
+  return (
+    <div>
+      <h1 style={isDone ? strikeThrough : null}> Hi Hello </h1>
+      <button onclick={Strike}>CLICK </button>
+    </div>
+  );
+}
+
+export default App;
+
+###IMPERATIVE
+-------------------------
+
+import React from "react";
+import "../public/styles.css";
+
+function strike() {
+  document.getElementById("root").style.textDecoration = "line-through";
+}
+function unstrike() {
+  document.getElementById("root").style.textDecoration = null;
+}
+
+
+function App() {
+  return (
+    <div>
+      <h1> Hi Hello </h1>
+      <button onClick={strike}>CLICK </button>
+      <button onClick={unstrike}>CLICK </button>
+    </div>
+  );
+}
+
+export default App;
+
