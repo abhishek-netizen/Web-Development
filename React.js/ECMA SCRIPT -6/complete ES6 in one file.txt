@@ -1,0 +1,305 @@
+// 1.Vanilla JavaScript
+// which violates the scoup concept
+function sayHello(){
+  for(var i=0;i<5;i++){
+    console.log(i);
+  }
+  console.log(i);
+}
+sayHello();
+
+// 2. so "let" is introduced.
+function sayHello(){
+  for(let i=0;i<5;i++){
+    console.log(i);
+  }
+  console.log(i);
+}
+sayHello();
+
+//TAKE-AWAY:
+//var -> function
+//let -> block
+//const -> block
+
+// 3. Difference between let and const
+let x = 1;
+x = 2
+console.log(x)  ----> works fine
+
+const x=1;
+x=2
+console.log(x) -----> errror!!
+-----------------------------------------------------------------------------------------------
+OBJECTS
+
+// 4
+// 4.1 objects in js is a key-value pairs.
+// 4.2 a function inside an objects is called as method.
+
+const person = {          -object
+  name:'mosh',            - property
+  walk:function(){},      - methods. Warning!! we dont have to mention function to create method we always follows talk method
+  talk(){}                - methods
+}
+
+const person = {
+ name: "mosh",
+ walk(){},
+ talk(){}
+}
+
+// 4.3 how to access the above code ???
+// Two ways to access the above code
+person.name = '';                    -- we use this method when we know exactly what the input is ahead of time
+person['name'] = 'john';             --- when we dont know the future we use this
+
+example::
+
+const targetMember = 'name';
+person[targetMember.value] = 'john';   -- dynamically rendering here
+-----------------------------------------------------------------------------------------------------
+this keyword in JS
+
+const person = {
+  name:'mosh',
+  walk(){
+    console.log(this);
+  }
+};
+person.walk()          --- when called as method in a object --- it shelps us to get back to the reference and shows the refrence
+
+const walk = person.walk;
+walk()                 --- but when it called as the function out of the objects(as global func) -- it shows the window functions
+------------------------------------------------------------------------------------------------------------
+BINDING this in JS
+
+// 4.4 functions in javascripts are objects. They have properties and methods we can use.
+
+so in previous i have seen the when its called as function out of the objects it returns window func, So how to make it return to the reference in that case???
+
+const person = {
+  name:'mosh',
+  walk(){
+    console.log(this);
+  }
+};
+person.walk()   --- get back to the reference
+
+const walk = person.walk.bind(person)   --- so here comes the bind method for the rescue, it helps us to get back to the reference.
+walk()
+-----------------------------------------------------------------------------------------------------------------
+ARROW FUNCTIONS
+
+//4.5 normal func vanilla js
+const square = function(number){
+  return number * number;
+}
+//4.6 Arrow
+const square = (number) => {    --- remove function, put a fat arrow in b/w parameter and body of the func
+  return number * number;
+}
+//4.6.1 if you have only single parameter,you can exclude parenthesis.
+const square = number => {
+return number * number;
+}
+//4.6.2 if you have zero parameter you have to add empty parenthesis.
+const square = () => {
+return number * number;
+}
+//4.6.3 if the body of the function has single line and return single value.
+const square = (number) => number * number;  -- in such cases you can remove flower braces and return keyword as well  4.6.3 is same as 4.5
+//4.6.4 how to call ??
+const square = number =>number * number;
+console.log(square(5))
+//4.6.5 where arrow func useful in most ?
+
+const jobs = [
+  {id:1, isActive:true},
+  {id:2, isActive:true},
+  {id:3, isActive:false},
+];
+//Normal code
+const activeJobs = jobs.filter(function(job){return job.isActive;});
+//Arrow makes code more readable.
+const activeJobs = jobs.filter(job=>job.isActive);
+------------------------------------------------------------------------------------------------------------------
+ARROW function and this
+
+//4.7 one thing about ARROW function is they dont rebind this keyword.
+
+const person = {
+  walk() {
+    console.log("this", this);
+  }
+};
+person.walk(); // we got the reference
+
+//4.7.1 Lets wrap same above function in setTime out func and see.
+const person = {
+  walk() {
+    setTimeout(function () {
+      console.log("this", this);
+    }, 1000);
+  }
+};
+person.walk(); // we got a window function.
+//it happens in here setTimeout function is a standalone function,
+//its not a method inside person object
+
+//4.7.2 we already knew if we call it ouside of the object as standalone it returns window objects
+const person = {
+  walk() {
+    var self = this;
+    setTimeout(function () {
+      console.log("self", self);
+    }, 1000);
+  }
+};
+person.walk(); // we got refrence, But its used in old method not now
+
+// 4.7.3 Now we have Arrow function lets write the same code with arrow
+const person = {
+  walk() {
+    var self = this;
+    setTimeout(() => {
+      console.log("this", this);
+    }, 1000);
+  }
+};
+person.walk(); // we got refrence to person objects
+//in above code the this is not reset, its inherets this in the context in which its defined
+
+//TAKE-AWAY
+//Arrow function dont rebind this keyword.
+---------------------------------------------------------------------------------------------------------------------
+Array.map()
+
+// 4.8 Normal vanilla with map func
+const colors = ['red','green','blue'];
+const items = colors.map(function(color){
+  return '<li>' + color + '</li>';
+})
+
+// 4.8.1 lets make it as arrow
+const colors = ['red','green','blue'];
+const items = colors.map((color)=>'<li>' + color + '</li>')
+
+// 4.8.2 lets make this code even better using "Template literals"
+const colors = ['red','green','blue'];
+const items = colors.map((color)=> `<li>${color}</li>`) 
+console.log(items);
+-------------------------------------------------------------------------------------------------------------------------
+OBJECT DESTRUCTURING
+
+const address = {
+  street: '',
+  city:'',
+  country:''
+};
+
+// 4.8.3 This is How we normally access all these things..
+const street = address.street;
+const city = address.city;
+const country = address.country;
+// 4.8.4 Lets Write the above same code using "DESTRUCTURING".
+const {street,city,country} = address;
+// 4.8.5 lets use only one street
+const {street} = address;
+//4.8.6 lets use diferent name "Aliases"
+const {street:st} = address;
+----------------------------------------------------------------------------------------------------------------------------
+SPREAD OPERATOR
+
+// 4.8.7 on Array
+const first = [1, 2, 3];
+const second = [4, 5, 6];
+
+// 4.8.8 how to concat normally
+const combined = first.concat(second);  
+
+// 4.8.9 concat using spread operator
+const combined = [...first, ...second];
+console.log(combined); //[1,2,2,4,5,6]
+
+// 4.8.10 lets add something in the middle
+const combined = [...first, "ram", ...second];
+console.log(combined); //[1, 2, 3, "ram", 4, 5, 6]
+
+// 4.9 on Objects
+const first = { name: "mosh" };
+const second = { job: "instructor" };
+
+const combined = { ...first, place: "australia", ...second };
+console.log(combined);
+------------------------------------------------------------------------------------------------------------------------------
+CLASSES
+
+const person = {
+  name:"mosh",
+  walk(){
+    console.log("walk");
+  }
+};
+
+const person2 = {
+  name:"mosh",
+  walk(){
+    console.log("walk");
+  }
+};
+
+// 5.0 when we have an objects atleast one method we need blueprint to create objects of that type
+// and thats when we use classes.
+
+const person = {
+  name:"mosh",
+};
+
+class Person {   //first letter should be capital
+  constructor(name)                    //its a special keyword
+  this.name = name;       // this always reference to the main object we set the name property of that objevts to the new name recieved from outside.
+  walk(){
+    console.log("walk");
+  }
+}
+// now we have a blueprint to create the person objects
+
+const person = new Person('Mosh');
+person.walk
+person.name
+------------------------------------------------------------------------------------------------------------------------------
+Inheritance
+
+class Person {
+  constructor(name){
+    this.name = name;
+  }
+  walk(){
+    console.log("walk");
+  }
+}
+
+class Teacher extends Person{
+  constructor(name,degree){
+   super(name);
+   this.degree = degree;
+  }
+  teach(){
+    console.log("teach");
+  }
+}
+
+const teacher = new Teacher("abhish","BE") //apart from entering there name we want to enter there degree as well. insuch cases we have to use super and extends
+teacher.name;
+teacher.teach
+teacher.walk;
+teacher.degree;
+----------------------------------------------------------------------------------------------------------------------------------
+Modularity
+
+Default -> import ...from '' ;
+Named -> import {...} from '' ;
+
+
+
