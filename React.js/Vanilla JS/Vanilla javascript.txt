@@ -1,0 +1,51 @@
+Data types in JS
+
+1.Primitive/value type : string,number,boolean,undefined,null
+2.Reference type  : objects.Arrays,Functions
+
+---------------------------------------------------------------
+OBJECTS
+
+let person = {  --- its an object which stores properties those are key values.
+name:'Mosh',
+age:30
+};
+----------------------------------------------------------------
+How to access the objects
+
+1.By Dot notation
+ console.log(person.name)
+ person.name ='john';  --incase if you want to change the name
+
+2.By bracket notation.
+ console.log(person['name']);
+ person['name'] = 'John';
+-------------------------------------------------------------------------
+ARRAYS
+
+let selectedColors = ['red','green','orange']          ---- length of array as well as type of object in an array is always dynamic.
+selectedColors[2] = 'Viloet';                          --- obeys first rule
+selectedColors[3] = 300;                              ---- obeys first rule
+
+typeOf selectedColors // o/p object          ------ Arrays are objects in javascript      
+--------------------------------------------------------------------------------------------
+FUNCTIONS
+
+function greet(){
+console.log("Hello world")
+}
+greet();
+
+function greet(name){                       -----------Function taking the input name(or called as parameters)
+console.log("Hello World" + name)
+}
+greet('ram');                                   ---------when calling you have to pass the input(we referred to this as argument)
+
+function gree(name,lastName){
+console.log("hello" + name + lastName)
+}
+greet('Shree','ram')
+-----------------------------------------------------------------------------------------------
+TYPES OF FUNCTIONS
+
+console.log(square(2))           --- inthis type we have two function. console.log is also a func
