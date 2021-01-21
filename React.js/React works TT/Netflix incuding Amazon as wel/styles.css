@@ -1,0 +1,43 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+  background: pink;
+}
+
+.divMainCont {
+  align-items: center;
+}
+
+.Heading {
+  font-family: Helvetica;
+  font-size: 30px;
+}
+
+.imageSrc {
+  width: 300px;
+  height: 150px;
+  border-radius: 20px;
+}
+
+img:hover {
+  width: 310px;
+  height: 155px;
+  box-shadow: 55px;
+}
+
+.paraStyle {
+  font-size: 20px;
+  font-family: Lucida Sans;
+}
+
+.headStyle {
+  padding: 20px;
+  margin: -8px;
+  color: gray;
+  font-family: Gill Sans, "Gill Sans MT";
+  background: white;
+}
