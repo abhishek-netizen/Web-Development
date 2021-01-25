@@ -1,0 +1,24 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.active_class{
+  color: blue;
+}
+
+a.active_class{
+ color: #fff;
+ border-bottom: 2px solid red;
+}
+
+
+.menu_style{
+  width:100%;
+  line-height: 60px;
+  height: 60px;
+  background: lightgray;
+  display: flex;
+  justify-content: space-around;
+  
+}
