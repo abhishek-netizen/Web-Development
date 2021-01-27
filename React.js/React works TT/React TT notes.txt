@@ -1,0 +1,307 @@
+1.What is React?
+-React is a js library used for building user interface (UI).
+-React is not a framework.
+
+2.Power of React is its component:
+-we can avoid repetation of code.
+
+3.React uses declarative approach - the declarative approach is -mostly used by frameworks but react also use the delacrative approach eventhough its a library.
+
+-declarative approcah example: client wants us to build the ecoomerce website and he doesnt care how we build it.
+
+-Dom updates handled gracefully
+
+- Reusable code
+
+4.How to create React app in vs code?
+-npm install -g create-react-app
+-create-react-app --version
+-create-react-app <project name>
+-npm start to run react server
+-npm run build    to run in production
+-npm run eject 
+
+5.Package.json contains meta data
+
+6.<noscript> </noscript> in index.html just use to tell if someones desktop JS is not working it will tell them to unable it.
+
+7. var React = require('react');
+   var ReactDOM = require('react-DOM')
+   
+   ReactDOM.render('kya dhikana hai?', 'kaha dikhana hai?');
+   to write kya dikhana u need React, Kaha dhikana you need ReactDOM.
+   ReactDOM.render(<h1>Hello world</h1>, document.getElementById('root'));
+
+8. What is babel?
+-all the browsers have JS. but now we have Modern javascript as well right? so how is that possible our browser understand this?
+-so thats why we need a compiler.
+-babel is a compiler which helps to convert modern javascriptin into JS so that browser can unerstand.
+
+-so previous codes can be changed to modern js with the help of babel
+import React from 'react'
+import ReactDOM from "react-dom"
+
+9. What is JSX?
+ JSX - Java Script Exention or Java Script XML
+
+ React.render(<h1>How does this work in palin js</h1>,document.getElementById('root'));
+
+- like this
+
+var h1 = document.createElement("h1");
+h1.innerHTML = "how does this work";
+document.getElementById('root').appendChild(h1);
+
+10. What to do if i want to return multiple elements?
+- enclose them with any enclosing tag egs: <div>
+- if your react version is more than v16 we can return an array of elements. egs: [, , ,]
+
+React.render(
+<div>
+  <h1>Hi</h1>
+  <p>Hello </p>
+</div>
+,document.getElementById('root'));
+
+React.render( 
+[
+ <h1>Hi</h1>,
+ <p>Hello</p>,
+]
+,document.getElementById('root');
+)
+
+11. What is the use of React fragments?
+- the use of React Fragment is: it will avoid creating an extra <div>, to get to know better use devTools.
+- its a syntactic sugar, even if you forgot to type React.Fragements and just <> </> it will work.
+
+React.render(
+<React.Fragments>       // <>
+<h1>hi</h1>,
+<p>hello</p> 
+</React.Fragments>      // </>
+,
+document.getElementById('root')
+)
+
+12. JavaScript Expressions.
+-Inorder to use JS inside the HTML we use JS expressions. {}
+- JavaScript Expression Conditions: 
+	- 1.we can only use Expression inside curly braces. (expression is a combination of operator and operand)
+	- 2.but not the statement(statement's are condns if(5>3){do this})
+//Below code works as it follows rule 1.
+const fName = 21;
+export default function App() {
+  return (
+    <>
+      <h1>The value is {fName}</h1> or u cn also use
+	<h1>The value is {Math.random()}</h1>
+    </>
+  );
+}
+//Below code doesnot work as it follows rule 2.
+const fName = 21;
+export default function App() {
+  return (
+    <>
+      <h1>The value is {if(21>20){alert("hi")}}</h1>
+    </>
+  );
+}
+
+13. Template Literals
+-Template literals helps us to writedown string and js together eg: as below
+
+const fName = "Guna";
+const lName = "Thilaka"
+
+export default function App() {
+  return (
+    <>
+      <h1>my first & last name is : {fName +" "+lName}</h1>, //normal way
+      <h1>{`my first name ${fName} and last name is ${lName}`}</h1>  //template literals
+    </>
+  );
+}
+
+toLocaleDateString();
+toLocaleTimeString();
+
+14. What are JSX attributes?
+- in HTML attributes are href target accesskey contenteditable etc 
+- inside React same thing is written using the camelCase
+- and also if some tag dont have children inside them (eg: <img src=""> nothing here</img>), such tags must make self closing in reatc <img />
+
+15. in react class is an reserved word to add we have to type className.
+
+16. universal - in css  * { margin: 0; padding: 0; box-sizing: border-box; background:wheat;}
+
+17. If you want to write css as inline in react, then we have to think inline as Object. key: 'value'
+- and one more thing you have to write kabab case of css as camelCase inside react.
+
+18. when writing any conditional functions observe scope.
+- use <span> </span> tag for individual element style ing
+
+19. Components :
+- Rule_1. the first letter should be capital egs: Heading.jsx
+- Because of default export we can use differet name for compoents and for functions.
+
+20. Import or Export
+- default export should be just one.
+- named export can be many it has to be wrapped with the curly braces {}
+
+21. React props 
+- props full name is properties
+- are similar to function arguments in js, and attributes in HTML 
+- if you want to get the values you have to pass as props
+
+22. Array
+- method 1.  var someThing  = ['a','b','c','d']
+- method 2.  var someThing = new Array('a','b','c','d') 
+
+23. 
+- the map() method creates a new array with the results of calling a function for every array elements.
+- the map() method calls the provided function once for each elements in an array , in order
+- array.map(function(currentValue,index,arr), thisValue)
+	- currentValue - Required. the value of the current elemnt
+	- index optional - the array index of the current element
+        - arr optional - the array object the current element belongs to
+
+lets see the Egs:
+method 1 :
+let oldArray = [
+ {id:1, name:"John", degree:"BE"},
+ {id:2, name:"guru", degree: "Bcs"},
+ {id:3, name:"kiran", degree: "mcs"}
+]
+
+let newArray = oldArray.map(function(store,i){ 
+return store.id + store.name + store.degree
+})
+
+method 2.
+let oldArray = ["Never","Give","Up"]
+
+let newArray = oldArray.map(function(store,i){
+return store
+})
+
+or you can replace them with the arrow functon
+
+let newArray = oldArray.map((store,i)=>{return store})
+
+23. when you are passing the cards in the map method 
+the key property is very important, always select unique values as keys. egs: key = {cdata.id}
+
+24. if(){ 
+      return //do some
+    }else{ 
+     return  //do some
+    }
+25. Ternary operator : or also called as Conditional rendering.
+- condition ? expression If True : Expression if False. for egs:  {(favSeries === 'netflix') ? <Netflix /> : <Amazon />}
+- no need of writing if no need of writing return 
+
+26. Array Destructuring.
+- The Destructuring assignment syntax is a JS expression that make it possible to UNPACK VALUES FROM ARRAYS, or properties from objects , into distinct variables. (egs)
+
+- let myFruits = ['apple','banana','cherries','dragon fruit']
+ // lets use Destructuring
+
+console.log(myFruits.length)
+
+let [top1,top2,top3,top4] = myArray
+if you want all of the array then use [...Top1] = myArray; //output all the array
+if you want perticular elements then use [Top1,,,] = myArray; //error
+[Top1] = myArray; //apple
+[,Top1] = myArray; //banana
+[,,Top1] = myArray; //cherries
+[,,,Top1] = myArray; //Dragon fruits
+
+27. React Hooks. introuduced at version 16.
+- it allows you to use state and other React features WITHOUT WRITING A CLASS. Hooks are the functions which "hook into" React state and lifecycle features from function components.
+- it does not work inside the classes.
+- Hooks should always be used at the top level of the React functions.
+- node version should be above 6 and npm version should be above 5
+28. useState()
+
+29. destructuring
+
+-myArray_one{ 
+ name:"graham",
+ age: 30
+ }
+-myArray_two{
+id:1,
+ ...myArray_one,
+gender:male 
+ }
+
+30. If you have an array and you want to show elements of that array one by one we use array.map method
+31. Prpos are immutable, which means we cant change them.
+
+32. cmd in vs code ctrl + `  ctrj + j
+
+33. intellisense for css
+
+33. Context API.
+- React context API allows you to easily access data at different levels of the component tree, without passing prop to every level.
+- CreateContext - Provider -Consumer
+
+34. useContext.                          ALWAYS REMEBER HOOKS NEVER WORKS WITH CLASS COMPONENTS.
+- is the alternative for the Redux
+- useContext is used to send the data around.
+
+35. useEffect.
+- By using the Hook you tell React that your component needs to do something after render.
+- React will remember the function you passed and call it later performing the DOM updates.
+- useEffect will single handedly do the same work that class componenets life cycles such as componentDidMount, componentDidUpdate, copmonentWillUnmount.
+
+36. Axious and useEffect API:
+
+   useEffect(()=>{
+
+  async function getData(){
+      const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${num}`)
+      console.log(res.data.name)
+      setName(res.data.name)
+      setMove(res.data.moves.length)
+      setImgs(res.data.sprites.back_default)
+    }
+  getData()
+});
+
+37. React Router : using URL
+- if the websites founds to be reloading its mostly of the Server Side Rendering.
+- but when we use React Router it does not refresh at all its a Client Side Rendering.
+-step-1
+ u have to include <BrowserRouter> in the components you are rendering.
+-setp-2
+ u have to include import {Route,Switch} from 'react-router-dom'
+-step-3
+  <Switch>
+     <Route exact path="/" components={} />
+   </Switch>
+
+38. React Riuter Dom Nav Link:
+- import NavLink from 'react-router-dom'
+- <NavLink exact activeClassName="active_class" to="/">About-Us NavLink </NavLink>
+
+39. Hooks does-not have lifeCycle method
+
+40. Difference between Render and Component Prop on React Route:
+- components will create new everytime
+- render will give the existing one
+- theres is no such performance difference  between them
+- however when you feel you have to pass props then its better to use render method
+- if you want to call as it is without props then its best to use component.
+
+41. useParams is used for the dynamic rendering of the url
+- for example: contact/(dynamic)     contact/abhish
+
+42. useLocation hooks:
+-  const location = useLocation();
+- location.pathname
+
+43. useHistory hooks
+-history is mutable, donot use history.location 
